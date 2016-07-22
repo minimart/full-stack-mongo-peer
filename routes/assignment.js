@@ -16,7 +16,28 @@ router.get('/getAssignments', function(request, response){
   })
 });
 
-// router.post('/postAssign')
+
+router.post('/postAssignments', function(request, response){
+  var data = request.body;
+
+  var createdAssignment = new Assignment({
+    assignment_number: data.assignment_number,
+    student_name: data.student_name,
+    score: data.score,
+    date_completed: new Date(),
+    notes: data.notes
+  });
+
+  createdAssignment.save(function(err){
+    if(err){
+      console.log('Save error! : ', err);
+      response.sendStatus(500);
+    }
+  });
+
+  response.sendStatus(200);
+
+})
 
 
 

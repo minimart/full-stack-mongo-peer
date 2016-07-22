@@ -11,6 +11,7 @@ var assignmentRoute = require('./routes/assignment.js')
 MongoDB.on('error', function(err){
   console.log('mongodb connection error: ', err);
 });
+
 MongoDB.once('open', function() {
   console.log('MongoDB connection open!')
 });
@@ -21,22 +22,7 @@ app.use(express.static('public'));
 app.use('/', index);
 app.use('/assignments', assignmentRoute);
 
-// var createdAssignment = new Assignment({
-//   assignment_number: 1,
-//   student_name: 'Joe Schmoe',
-//   score: 85,
-//   date_completed: new Date(),
-//   notes: 'Nice work, loser.'
-// });
-// createdAssignment.save(function(err){
-//   if(err){
-//     console.log('Save error! : ', err);
-//     response.sendStatus(500);
-//   }else {
-//     console.log('Save SUCCESS!')
-//     response.sendStatus(200);
-//   }
-// });
+
 
 
 
