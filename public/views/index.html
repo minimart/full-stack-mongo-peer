@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html ng-app="assignmentApp">
+
+<head>
     <meta charset="utf-8">
     <title>Student Assignment Viewer/Creator/Changer/Awesome.</title>
-    
-  </head>
-  <body>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="styles/stylesheet.css" />
+    <script src="vendor/angular/angular.min.js" charset="utf-8"></script>
+    <script src="scripts/MainController.js" charset="utf-8"></script>
+</head>
 
-  </body>
+<body class="container col-md-6" ng-controller="MainController as main">
+    <header class="page-header">
+        <h1>Student Assigments</h1>
+        <header>
+
+            Assignment Number: <input type="number" ng-model="main.assignmentNumber"/>
+            <br>
+            Student Name: <input type="text" ng-model="main.studentName" />
+            <br>
+            Score: <input type="number" ng-model="main.score" />
+            <br>
+            <!-- Date Completed: <input type="number" /> -->
+            Notes: <input type="text" ng-model="main.notes" />
+            <br>
+
+            <button ng-click="main.submitAssignment()" class="btn btn-med btn-primary">Submitify</button>
+
+            <section class="container col-md-6">
+                <ul>
+                  <!-- <li ng-repeat=""> -->
+                  </li>
+                </ul>
+
+
+</body>
+
 </html>
