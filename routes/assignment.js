@@ -1,11 +1,11 @@
 var router = require('express').Router();
-// var Assignment = require('../models/assignments.js')
-// var mongoose = require('mongoose');
+var Assignment = require('../models/assignments.js')
+var mongoose = require('mongoose');
 
 
 
 router.get('/getAssignments', function(request, response){
-  assignments.find({}, function(err, assignments){
+  Assignment.find({}, function(err, assignments){
     if(err){
       console.log('Failed to fetch assignment. Error: ', err);
       response.sendStatus(500);
