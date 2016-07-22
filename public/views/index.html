@@ -9,11 +9,12 @@
     <script src="vendor/angular/angular.min.js" charset="utf-8"></script>
     <script src="scripts/MainController.js" charset="utf-8"></script>
 </head>
+<body ng-controller="MainController as main" class="container">
+  <header class="page-header">
+      <h1>Student Assigments</h1>
+    </header>
+<section class="col-md-6 center-block">
 
-<body class="container col-md-6" ng-controller="MainController as main">
-    <header class="page-header">
-        <h1>Student Assigments</h1>
-        <header>
 
             Assignment Number: <input type="number" ng-model="main.assignmentNumber"/>
             <br>
@@ -25,15 +26,27 @@
             Notes: <input type="text" ng-model="main.notes" />
             <br>
 
-            <button ng-click="main.submitAssignment()" class="btn btn-med btn-primary">Submitify</button>
+            <button ng-click="main.submitAssignment()" class="btn btn-lg btn-primary">Submitify</button>
+</section>
 
-            <section class="container col-md-6">
+            <article class="col-md-6">
                 <ul>
-                  <!-- <li ng-repeat=""> -->
+                  <li ng-repeat="completed in main.completedAssignments">
+                     <p><em>Assignment Number: </em>{{completed.assignment_number}}
+                       <br>
+                       <em>Student's Name: </em>{{completed.student_name}}
+                       <br>
+                       <em>Score: </em>{{completed.score}}
+                       <br>
+                       <em>Date Completed:</em> {{completed.date_completed}}
+                       <br>
+                       <em>Notes:</em> {{completed.notes}}
+                       <button ng-click="main.deleteAssignment(completed._id)" class="btn btn-sm btn-warning">Delete Assignment</button>
+                     </p>
                   </li>
                 </ul>
 
 
+</article>
 </body>
-
 </html>

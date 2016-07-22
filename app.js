@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.use('/', index);
-app.use('/assignments', assignmentRoute);
+app.use('/assignment', assignmentRoute);
 
 
 
