@@ -1,40 +1,43 @@
 angular.module('assignmentApp', []);
 
-angular.module('assignmentApp').controller('MainController', function($http){
-  var vm = this;
+angular.module('assignmentApp').controller('MainController', function($http) {
+    var vm = this;
 
-  vm.submitAssignment = function(){
-    console.log('click');
-    var sendData = {};
+    //Submit user input data on button click and send to server
+    vm.submitAssignment = function() {
+        var sendData = {};
 
-    sendData.assignment_number = vm.assignmentNumber;
-    sendData.student_name = vm.studentName;
-    sendData.score = vm.score;
-    sendData.date_completed = new Date();
-    sendData.notes = vm.notes;
+        sendData.assignment_number = vm.assignmentNumber;
+        sendData.student_name = vm.studentName;
+        sendData.score = vm.score;
+        sendData.date_completed = new Date();
+        sendData.notes = vm.notes;
 
-    console.log(sendData);
-    $http.post('/assignment/postAssignments', sendData).then(function(response){
-      console.log(response);
-    }, function(response){
-      console.log('Post failed', response)
-    })
+        $http.post('/assignment/postAssignments', sendData).then(function(response) {
+            console.log(response);
+            getAssignments();
+        }, function(response) {
+            console.log('Post failed', response)
+        })
+    }
+
+
+    //Refreshes page with current collection documents
+    var getAssignments = function() {
+        $http.get('/assignment/getAssignments').then(function(response) {
+            vm.completedAssignments = response.data
+        })
+    };
     getAssignments();
-  }
-var getAssignments = function(){
-  $http.get('/assignment/getAssignments').then(function(response){
-  console.log(response);
-  vm.completedAssignments = response.data}
-  )};
-  getAssignments();
 
-vm.deleteAssignment = function(id){
-console.log(id);
-  $http.delete('/assignment/deleteAssignments/'+id).then(function(response){
-    console.log(response);
-    getAssignments();
-  });
 
-}
+    //Sends id of which document to be deleted
+    vm.deleteAssignment = function(id) {
+        $http.delete('/assignment/deleteAssignments/' + id).then(function(response) {
+            console.log(response);
+            getAssignments();
+        });
+    }
+
 
 })

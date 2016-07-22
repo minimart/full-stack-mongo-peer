@@ -3,7 +3,7 @@ var Assignment = require('../models/assignments.js')
 var mongoose = require('mongoose');
 
 
-
+//Get all documents in collection
 router.get('/getAssignments', function(request, response) {
     Assignment.find({}, function(err, assignments) {
         if (err) {
@@ -17,6 +17,7 @@ router.get('/getAssignments', function(request, response) {
 });
 
 
+//Add new document to collection
 router.post('/postAssignments', function(request, response) {
     var data = request.body;
 
@@ -36,14 +37,9 @@ router.post('/postAssignments', function(request, response) {
     });
 
     response.sendStatus(200);
-
-
-    console.log(request);
-    // var id = request.body.id;
-
 })
 
-
+//Remove document from collection
 router.delete('/deleteAssignments/:id', function(request, response) {
     var id = request.params.id;
     console.log('click')

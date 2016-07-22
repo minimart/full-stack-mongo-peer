@@ -9,44 +9,47 @@
     <script src="vendor/angular/angular.min.js" charset="utf-8"></script>
     <script src="scripts/MainController.js" charset="utf-8"></script>
 </head>
+
 <body ng-controller="MainController as main" class="container">
-  <header class="page-header">
-      <h1>Student Assigments</h1>
+    <header class="page-header">
+        <h1>Student Assigments</h1>
     </header>
-<section class="col-md-6 center-block">
+    <section class="col-md-6 center-block">
 
 
-            Assignment Number: <input type="number" ng-model="main.assignmentNumber"/>
-            <br>
-            Student Name: <input type="text" ng-model="main.studentName" />
-            <br>
-            Score: <input type="number" ng-model="main.score" />
-            <br>
-            <!-- Date Completed: <input type="number" /> -->
-            Notes: <input type="text" ng-model="main.notes" />
-            <br>
+        Assignment Number:
+        <input type="number" ng-model="main.assignmentNumber" />
+        <br> Student Name:
+        <input type="text" ng-model="main.studentName" />
+        <br> Score:
+        <input type="number" ng-model="main.score" />
+        <br>
+        Notes:
+        <input type="text" ng-model="main.notes" />
+        <br>
 
-            <button ng-click="main.submitAssignment()" class="btn btn-lg btn-primary">Submitify</button>
-</section>
+        <button ng-click="main.submitAssignment()" class="btn btn-lg btn-primary">Submitify</button>
+    </section>
 
-            <article class="col-md-6">
-                <ul>
-                  <li ng-repeat="completed in main.completedAssignments">
-                     <p><em>Assignment Number: </em>{{completed.assignment_number}}
-                       <br>
-                       <em>Student's Name: </em>{{completed.student_name}}
-                       <br>
-                       <em>Score: </em>{{completed.score}}
-                       <br>
-                       <em>Date Completed:</em> {{completed.date_completed}}
-                       <br>
-                       <em>Notes:</em> {{completed.notes}}
-                       <button ng-click="main.deleteAssignment(completed._id)" class="btn btn-sm btn-warning">Delete Assignment</button>
-                     </p>
-                  </li>
-                </ul>
+    <article class="col-md-6">
+        <ul>
+            <li ng-repeat="completed in main.completedAssignments">
+                <p><em>Assignment Number: </em>{{completed.assignment_number}}
+                    <br>
+                    <em>Student's Name: </em>{{completed.student_name}}
+                    <br>
+                    <em>Score: </em>{{completed.score}}
+                    <br>
+                    <em>Date Completed:</em> {{completed.date_completed}}
+                    <br>
+                    <em>Notes:</em> {{completed.notes}}
+                    <button ng-click="main.deleteAssignment(completed._id)" class="btn btn-sm btn-warning">Delete Assignment</button>
+                </p>
+            </li>
+        </ul>
 
 
-</article>
+    </article>
 </body>
+
 </html>
